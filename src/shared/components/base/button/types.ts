@@ -50,10 +50,10 @@ interface IButtonLabel {
 }
 
 export type {
-  IButtonContext,
-  IButtonRoot,
   IButtonContent,
-  IButtonLoading,
+  IButtonContext,
   IButtonIndicator,
   IButtonLabel,
+  IButtonLoading,
+  IButtonRoot,
 };

@@ -1,4 +1,6 @@
 // @ts-check
+import { createCompoundComponent } from "@/shared/utils/create-compound-component";
+import { LinearGradient } from "expo-linear-gradient";
 import React, {
   createContext,
   memo,
@@ -8,22 +10,21 @@ import React, {
   useMemo,
 } from "react";
 import {
+  ActivityIndicator,
+  Platform,
   Pressable,
   StyleSheet,
-  Platform,
   View,
   type ViewStyle,
-  ActivityIndicator,
 } from "react-native";
 import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  withTiming,
-  interpolate,
   Easing,
+  interpolate,
   interpolateColor,
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
 } from "react-native-reanimated";
-import { LinearGradient } from "expo-linear-gradient";
 import type {
   IButtonContent,
   IButtonContext,
@@ -32,7 +33,6 @@ import type {
   IButtonLoading,
   IButtonRoot,
 } from "./types";
-import { createCompoundComponent } from "@/shared/utils/create-compound-component";
 
 const ButtonContext = createContext<IButtonContext | null>(null);
 
@@ -225,7 +225,7 @@ const ButtonLabel: React.FC<IButtonLabel> = ({
 
 const styles = StyleSheet.create({
   pressable: {
-    alignSelf: "flex-start",
+    alignSelf: "auto",
   },
   pressed: {
     opacity: 0.9,
@@ -273,13 +273,13 @@ const Button = createCompoundComponent("Button", Root, {
   Label,
 });
 
-export { Button, Root, Content, Loading, Indicator, Label, useButton };
+export { Button, Content, Indicator, Label, Loading, Root, useButton };
 export default Button;
 export type {
-  IButtonRoot,
   IButtonContent,
-  IButtonLoading,
+  IButtonContext,
   IButtonIndicator,
   IButtonLabel,
-  IButtonContext,
+  IButtonLoading,
+  IButtonRoot,
 } from "./types";
