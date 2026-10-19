@@ -1,10 +1,15 @@
 import { Button } from "@/shared/components/base/button";
 import { StyleSheet, Text, View } from "react-native";
+import { colors } from "@/style/colors";
 
 export default function Index() {
   return (
-    <View style={style.view}>
-      <Button>
+    <View style={style.container}>
+      <Button
+        onPress={() => {
+          console.log("Cliquei!");
+        }}
+      >
         <Text>Hello World!</Text>
       </Button>
     </View>
@@ -12,9 +17,15 @@ export default function Index() {
 }
 
 const style = StyleSheet.create({
-  view: {
+  container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    backgroundColor: colors.background.primary,
+    gap: 8,
+  },
+
+  text: {
+    color: colors.text.primary,
   },
 });
