@@ -1,20 +1,38 @@
 version: 2
 
 updates:
+  # NPM Dependencies
   - package-ecosystem: "npm"
     directory: "/"
+
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
       timezone: "America/Sao_Paulo"
+
     open-pull-requests-limit: 5
 
+    ignore:
+      # Prevent automatic major version upgrades
+      - dependency-name: "*"
+        update-types:
+          - "version-update:semver-major"
+
+      # React Native minor updates may require
+      # upgrading the Expo SDK
+      - dependency-name: "react-native"
+        update-types:
+          - "version-update:semver-minor"
+
+  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
+
     schedule:
       interval: "weekly"
       day: "monday"
       time: "09:00"
       timezone: "America/Sao_Paulo"
+
     open-pull-requests-limit: 3
